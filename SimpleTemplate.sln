@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTemplate", "SimpleTemplate\SimpleTemplate.csproj", "{45D60822-79A0-40C3-BE29-81F55D13D8FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTemplate.Tests", "SimpleTemplate.Tests\SimpleTemplate.Tests.csproj", "{8AF4EBC4-ADCE-4AD9-A2E7-73D3B7014DDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTemplateConsoleTest", "SimpleTemplateConsoleTest\SimpleTemplateConsoleTest.csproj", "{DF58EE0D-DE68-46D2-AC02-92332F8F0DF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45D60822-79A0-40C3-BE29-81F55D13D8FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45D60822-79A0-40C3-BE29-81F55D13D8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45D60822-79A0-40C3-BE29-81F55D13D8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45D60822-79A0-40C3-BE29-81F55D13D8FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AF4EBC4-ADCE-4AD9-A2E7-73D3B7014DDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AF4EBC4-ADCE-4AD9-A2E7-73D3B7014DDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AF4EBC4-ADCE-4AD9-A2E7-73D3B7014DDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AF4EBC4-ADCE-4AD9-A2E7-73D3B7014DDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF58EE0D-DE68-46D2-AC02-92332F8F0DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF58EE0D-DE68-46D2-AC02-92332F8F0DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF58EE0D-DE68-46D2-AC02-92332F8F0DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF58EE0D-DE68-46D2-AC02-92332F8F0DF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
