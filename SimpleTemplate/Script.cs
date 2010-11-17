@@ -35,6 +35,8 @@ namespace SimpleTemplate
 
         private void ExecuteScript()
         {
+            Console.WriteLine("Executando script {0}", this.scriptFile);
+
             foreach (var templateReference in this.templates)
             {
                 var template = new Template(templateReference.TemplateFile)
@@ -42,8 +44,37 @@ namespace SimpleTemplate
                     Parameters = this.parameters
                 };
 
-                template.Transform(templateReference.TransformationFile);
+                this.TransfomTemplate(templateReference, template);
             }
+        }
+
+        private void TransfomTemplate(ScriptLine templateReference, Template template)
+        {
+            try
+            {
+                template.Transform(templateReference.TransformationFile);
+
+                Console.WriteLine(
+                    "Template {0} transformado em {1}",
+                    templateReference.TemplateFile,
+                    templateReference.TransformationFile);
+
+                if (string.IsNullOrEmpty(templateReference.ProjectFile) == false)
+                {
+                    this.IncludeTransformedFileInProject(templateReference);
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error when try transform " + template.TemplateFile);
+                throw;
+            }
+        }
+
+        private void IncludeTransformedFileInProject(ScriptLine templateReference)
+        {
+            var project = new Project(templateReference.ProjectFile);
+            project.IncludeCompileFile(templateReference.TransformationFile);
         }
 
         private void ParseScript()

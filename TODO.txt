@@ -1,0 +1,28 @@
+- /?
+- create folders structure lib, src
+- create build script
+- copyright and license on console and source files
+- delete generated files based on script
+- parse before execute anything
+- regex to parse
+- refactor foreach code
+- change ${foreach} by #{foreach}
+- include transformed files in csproj
+- script can call other script
+- error when detect not declare variable inside foreach
+- handle empty line create by end foreach
+- not repeat file in csproj when call same script many times
+- declare in script include in csproj as compile, as embeddedresource, etc...
+- accept comments in script
+- addin for visual studio
+- clean ..\..\ and ../../
+- change format of script file to:
+
+$file.script
+	@to ../../src/Veros.Ecm.Web/Controllers/${entity}Controller.cs
+	@project ../../src/Veros.Ecm.Web/Veros.Ecm.Web.csproj
+	@include Controllers/${entity}Controller.cs
+	@compile|content|embeddedresource
+
+- test to check encode UTF8
+-

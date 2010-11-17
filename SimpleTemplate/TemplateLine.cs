@@ -7,10 +7,12 @@ namespace SimpleTemplate
     public class TemplateLine
     {
         private readonly string line;
+        private readonly IDictionary<string, string> parameters;
 
-        public TemplateLine(string line)
+        public TemplateLine(string line, IDictionary<string, string> parameters)
         {
             this.line = line;
+            this.parameters = parameters;
             this.Variables = new List<string>();
         }
 
@@ -87,8 +89,34 @@ namespace SimpleTemplate
             }
             else
             {
+                this.ThrowExceptionIfVariableNotDeclared(variableName);
                 this.Variables.Add(variableName);    
             }
+        }
+
+        private void ThrowExceptionIfVariableNotDeclared(string variableName)
+        {
+////            if (this.parameters.ContainsKey(variableName) == false)
+////            {
+////                const string Message = @"Variable {0} was not declared. 
+////Variables declared: 
+////{1}";
+
+////                throw new InvalidOperationException(
+////                    string.Format(Message, variableName, this.ShowParameters()));
+////            }
+        }
+
+        private string ShowParameters()
+        {
+            var show = string.Empty;
+
+            foreach (var parameter in parameters)
+            {
+                show += parameter.Key + ":" + parameter.Value + Environment.NewLine;
+            }
+
+            return show;
         }
     }
 }

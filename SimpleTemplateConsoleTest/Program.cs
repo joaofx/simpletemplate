@@ -1,5 +1,6 @@
 ﻿namespace SimpleTemplateConsoleTest
 {
+    using System;
     using SimpleTemplate;
 
     class Program
@@ -11,6 +12,8 @@
                 "attr:{name:Name,type:string},{name:Active,type:bool}";
 
             SimpleTemplate.Program.Main(CommandLine.ToArgs(CommandLineText));
+
+            Console.ReadKey();
         }
     }
 }

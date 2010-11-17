@@ -1,24 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SimpleTemplate
+﻿namespace SimpleTemplate
 {
+    using System;
+
     public static class Program
     {
         public static void Main(string[] args)
         {
-            var arguments = new Arguments(args).Parse();
+            Console.WriteLine("SimpleTemplate started");
 
-            var script = new Script(arguments.Script);
-            
-            foreach (var parameter in arguments.Parameters)
+            try
             {
-                script.Parameter(parameter.Key, parameter.Value);
-            }
+                var arguments = new Arguments(args).Parse();
 
-            script.Execute();
+                var script = new Script(arguments.Script);
+
+                foreach (var parameter in arguments.Parameters)
+                {
+                    script.Parameter(parameter.Key, parameter.Value);
+                }
+
+                script.Execute();
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Erro: {0}", exception.Message);
+            }
         }
     }
 }

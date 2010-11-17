@@ -34,6 +34,27 @@ template2.template => ${age}.txt";
         }
 
         [Test]
+        public void Should_transform_template_and_add_as_content_in_a_csproj()
+        {
+            const string Template1 = @"name: ${name}";
+            
+            const string Script1 = @"template1.template => Name.txt @ csproj.xml";
+
+            this.CreateTemplateFile(Template1, "template1.template");
+            this.CreateTemplateFile(Script1, "script1.script");
+
+            new Script("script1.script")
+                .Parameter("name", "João Carlos")
+                .Execute();
+
+            File.Exists("Name.txt").ShouldBeTrue();
+            FileSystemUtil.GetAllText("Name.txt").ShouldEqual("name: João Carlos\r\n");
+
+            // TODO: a better assert
+            FileSystemUtil.GetAllText("csproj.xml").Contains("<Compile Include=\"Name.txt\" />");
+        }
+
+        [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void Should_throw_exception_if_script_file_is_null()
         {

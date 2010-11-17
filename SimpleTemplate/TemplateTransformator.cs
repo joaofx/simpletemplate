@@ -4,6 +4,7 @@ namespace SimpleTemplate
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Text;
 
     public class TemplateTransformator
     {
@@ -33,8 +34,7 @@ namespace SimpleTemplate
                 {
                     var line = reader.ReadLine();
                     
-                    var templateLine = new TemplateLine(line)
-                        .Parse();
+                    var templateLine = new TemplateLine(line, this.template.Parameters).Parse();
 
                     this.lines.Add(templateLine);
                 }
@@ -44,7 +44,7 @@ namespace SimpleTemplate
         private StreamWriter CreateStreamWriter()
         {
             this.temporaryGeneratedFile = Path.GetTempFileName();
-            return new StreamWriter(File.Create(this.temporaryGeneratedFile));
+            return new StreamWriter(File.Create(this.temporaryGeneratedFile), Encoding.UTF8);
         }
 
         private void TransformTemplate()

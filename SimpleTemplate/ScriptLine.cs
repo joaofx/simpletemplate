@@ -21,6 +21,12 @@ namespace SimpleTemplate
             private set;
         }
 
+        public string ProjectFile
+        {
+            get;
+            private set;
+        }
+
         public ScriptLine(string line) : this(line, new Dictionary<string, string>())
         {
         }
@@ -59,11 +65,22 @@ namespace SimpleTemplate
             }
 
             this.TemplateFile = keyValue[0].Trim();
-            this.TransformationFile = keyValue[1].Trim();
+            this.ParseTransformationAndProjectFile(keyValue[1]);
 
             this.ReplaceParametersInTransformationFile();
 
             return this;
+        }
+
+        private void ParseTransformationAndProjectFile(string keyValue)
+        {
+            var separated = keyValue.Split(new[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
+            this.TransformationFile = separated[0].Trim();
+            
+            if (separated.Length > 1)
+            {
+                this.ProjectFile = separated[1].Trim();
+            }
         }
 
         private void ReplaceParametersInTransformationFile()

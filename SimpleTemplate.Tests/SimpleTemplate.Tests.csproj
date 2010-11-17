@@ -58,6 +58,7 @@
     <Compile Include="ArrayTransformationTest.cs" />
     <Compile Include="CommandLineToArgsTest.cs" />
     <Compile Include="ParameterTest.cs" />
+    <Compile Include="ProjectTest.cs" />
     <Compile Include="ScriptLineTest.cs" />
     <Compile Include="ScriptTransformationTest.cs" />
     <Compile Include="TemplateLineTest.cs" />
@@ -70,6 +71,11 @@
       <Project>{45D60822-79A0-40C3-BE29-81F55D13D8FB}</Project>
       <Name>SimpleTemplate</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="csproj.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

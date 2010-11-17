@@ -54,6 +54,7 @@
     <Compile Include="CommandLineToArgs.cs" />
     <Compile Include="ForEach.cs" />
     <Compile Include="Parameter.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Script.cs" />
     <Compile Include="ScriptLine.cs" />
     <Compile Include="TemplateTransformator.cs" />

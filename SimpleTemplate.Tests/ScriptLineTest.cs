@@ -15,6 +15,7 @@
 
             scriptLine.TemplateFile.ShouldEqual("controller.template");
             scriptLine.TransformationFile.ShouldEqual("Controller.cs");
+            scriptLine.ProjectFile.ShouldBeNull();
         }
 
         [Test]
@@ -24,6 +25,7 @@
 
             scriptLine.TemplateFile.ShouldEqual("scaffold\\controller.template");
             scriptLine.TransformationFile.ShouldEqual("Controller.cs");
+            scriptLine.ProjectFile.ShouldBeNull();
         }
 
         [Test]
@@ -37,6 +39,7 @@
 
             scriptLine.TemplateFile.ShouldEqual("template1.template");
             scriptLine.TransformationFile.ShouldEqual("UserGroupController.cs");
+            scriptLine.ProjectFile.ShouldBeNull();
         }
 
         [Test]
@@ -50,6 +53,21 @@
 
             scriptLine.TemplateFile.ShouldEqual("view_edit.template");
             scriptLine.TransformationFile.ShouldEqual("Web/Views/UserGroup/Edit.aspx");
+            scriptLine.ProjectFile.ShouldBeNull();
+        }
+
+        [Test]
+        public void Should_parse_script_line_with_csproj()
+        {
+            var parameters = new Dictionary<string, string> { { "entity", "UserGroup" } };
+
+            var scriptLine = new ScriptLine(
+                "view_edit.template => Web/Views/${entity}/Edit.aspx @ csproj.xml", parameters)
+                .Parse();
+
+            scriptLine.TemplateFile.ShouldEqual("view_edit.template");
+            scriptLine.TransformationFile.ShouldEqual("Web/Views/UserGroup/Edit.aspx");
+            scriptLine.ProjectFile.ShouldEqual("csproj.xml");
         }
 
         [Test]
