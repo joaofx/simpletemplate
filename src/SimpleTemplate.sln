@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTemplate.Tests", "Sim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTemplateConsoleTest", "SimpleTemplateConsoleTest\SimpleTemplateConsoleTest.csproj", "{DF58EE0D-DE68-46D2-AC02-92332F8F0DF4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Script", "Script", "{E562703E-F6C5-4DA2-994A-B62D3E55211C}"
+	ProjectSection(SolutionItems) = preProject
+		..\script\common.build = ..\script\common.build
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

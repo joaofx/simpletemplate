@@ -1,6 +1,6 @@
 - /?
 - create folders structure lib, src
-- create build script
+- create build script to release package
 - copyright and license on console and source files
 - delete generated files based on script
 - parse before execute anything
@@ -25,4 +25,4 @@ $file.script
 	@compile|content|embeddedresource
 
 - test to check encode UTF8
--
+- remove dependency of nbehave

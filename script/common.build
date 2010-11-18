@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://nant.sf.net/schemas/nant.xsd" default="quick" basedir="..\">
+
+  <property name="dir.source" value="src"/>
+  <property name="dir.release" value="build\release"/>
+  <property name="dir.build" value="build\temp"/>
+  <property name="dir.lib" value="lib" />
+  <property name="dir.results" value="build\results"/>
+  <property name="file.solution" value="${dir.source}\SimpleTemplate.sln"/>
+  <property name="nant.settings.currentframework" value="net-3.5" />
+  
+  <target name="quick" depends="prepare, compile, test" />
+  <target name="release" depends="prepare, compile, test, package" />
+
+  <target name="prepare">
+    <delete dir="${dir.build}" failonerror="false" includeemptydirs="true" />
+    <mkdir dir="${dir.build}" />
+  </target>
+
+  <target name="compile" depends="prepare">
+    
+    <exec 
+      program="${framework::get-framework-directory(framework::get-target-framework())}\msbuild.exe"
+      commandline="${file.solution} /t:Clean /p:Configuration=Release /v:q /p:OutputPath=..\..\${dir.build}" />
+    
+    <exec 
+      program="${framework::get-framework-directory(framework::get-target-framework())}\msbuild.exe"
+      commandline="${file.solution} /t:Rebuild /p:Configuration=Release /p:OutputPath=..\..\${dir.build}" />
+   
+  </target>
+
+  <target name="test" depends="compile">
+    
+    <exec 
+      program="${dir.lib}\nunit\nunit-console.exe" 
+      commandline="${dir.build}\SimpleTemplate.Tests.dll /xml:${dir.results}\TestResult.xml"
+      workingdir="." />
+    
+  </target>
+
+  <target name="package">
+    <echo message="${nant::get-base-directory()}" />
+  </target>
+  
+</project>

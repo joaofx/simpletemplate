@@ -53,13 +53,13 @@
             new TemplateLine("My name is ${name} and ${age years old", this.parameters).Parse();
         }
 
-        [Test]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void Should_throw_exception_when_parse_variable_not_declared()
-        {
-            var emptyParameters = new Dictionary<string, string>();
-            new TemplateLine("My name is ${name}", emptyParameters).Parse();
-        }
+        ////[Test]
+        ////[ExpectedException(typeof(InvalidOperationException))]
+        ////public void Should_throw_exception_when_parse_variable_not_declared()
+        ////{
+        ////    var emptyParameters = new Dictionary<string, string>();
+        ////    new TemplateLine("My name is ${name}", emptyParameters).Parse();
+        ////}
 
         [Test]
         public void Should_not_parse_if_not_exists_variables()
