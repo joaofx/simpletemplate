@@ -1,0 +1,82 @@
+A simple template transformation written in C# .NET 3.5
+==================================================================
+How it works:
+
+- Template file
+
+You can create a template file and use ${} syntax to declare your variables. Example:
+
+controller.template file:
+
+/// <summary> 
+/// Represents a controller for ${entity}
+/// </summary> 
+public class ${entity}Controller : Controller
+{
+}
+
+You can use ${foreach}. Example:
+
+model.template file:
+
+/// <summary> 
+/// Represents a ${entity}
+/// </summary> 
+public class ${entity} : Entity
+{
+	${foreach properties}
+	public ${type} ${name}
+	{
+		get;
+		set;
+	}
+	{$end foreach}
+}
+
+- Script file
+
+You can create a lot of templates with one command using a script file.
+Declare your templates files and where files will be generated.
+You can use same variables for all templates
+Example:
+
+scaffold.script file:
+
+controller.template => WebSite\Controllers\${entity}Controller.cs
+model.template => WebSite\Models\${entity}.cs
+
+This example will transform controller.template and create a EntityController.cs at folder WebSite\Controllers
+
+- Execute script and declare variables
+
+Syntax is:
+
+SimpleTemplate.exe scriptfile param1:param1value "param2:param 2 value" ...
+
+To declare parameters for foreach use:
+
+SimpleTemplate.exe scriptfile param1:{array1param1:array1param1value,array1param2:array1param2value},{...} ...
+
+Example:
+
+SimpleTemplate.exe scaffold.script entity:Product properties:{name:Id,type:int},{name:Price,type:double},{name:Name,type:string}
+
+==================================================================
+For developers:
+
+Unit tests show how use classes of project.
+
+Project need to be refactored.
+
+This project is a simple prototype and meets my needs
+
+Why i don't use T4? I needed something very simple and I was not satisfied with T4
+
+Be free to fork!!!
+
+Contact: joaofx@gmail.com
+
+
+
+
+

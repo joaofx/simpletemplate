@@ -1,1 +1,1 @@
-tools\nant\nant.exe -buildfile:script\common.build
+tools\nant\nant.exe -buildfile:script\common.build %*

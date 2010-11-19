@@ -1,4 +1,5 @@
 
+*.cache
 *.user
 *.suo
 _ReSharper.SimpleTemplate

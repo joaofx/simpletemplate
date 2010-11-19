@@ -1,82 +1,21 @@
-A simple template transformation written in C# .NET 3.5
-==================================================================
-How it works:
+/release = binary release
+/doc = A really simple documentation
+/src = source code of course
+/script = build scripts
+/tools = tools for tests and build
 
-- Template file
+build.bat = execute build script
+opensolution.bat = open visual studio solution
+console.bat = open console to helper execute build script
 
-You can create a template file and use ${} syntax to declare your variables. Example:
+Build script options:
 
-controller.template file:
+build compile
+- just compile
 
-/// <summary> 
-/// Represents a controller for ${entity}
-/// </summary> 
-public class ${entity}Controller : Controller
-{
-}
+build test
+- compile and run unit tests
 
-You can use ${foreach}. Example:
-
-model.template file:
-
-/// <summary> 
-/// Represents a ${entity}
-/// </summary> 
-public class ${entity} : Entity
-{
-	${foreach properties}
-	public ${type} ${name}
-	{
-		get;
-		set;
-	}
-	{$end foreach}
-}
-
-- Script file
-
-You can create a lot of templates with one command using a script file.
-Declare your templates files and where files will be generated.
-You can use same variables for all templates
-Example:
-
-scaffold.script file:
-
-controller.template => WebSite\Controllers\${entity}Controller.cs
-model.template => WebSite\Models\${entity}.cs
-
-This example will transform controller.template and create a EntityController.cs at folder WebSite\Controllers
-
-- Execute script and declare variables
-
-Syntax is:
-
-SimpleTemplate.exe scriptfile param1:param1value "param2:param 2 value" ...
-
-To declare parameters for foreach use:
-
-SimpleTemplate.exe scriptfile param1:{array1param1:array1param1value,array1param2:array1param2value},{...} ...
-
-Example:
-
-SimpleTemplate.exe scaffold.script entity:Product properties:{name:Id,type:int},{name:Price,type:double},{name:Name,type:string}
-
-==================================================================
-For developers:
-
-Unit tests show how use classes of project.
-
-Project need to be refactored.
-
-This project is a simple prototype and meets my needs
-
-Why i don't use T4? I needed something very simple and I was not satisfied with T4
-
-Be free to fork!!!
-
-Contact: joaofx@gmail.com
-
-
-
-
+build release
+- compile, run unit tests and create release distribution package 
 

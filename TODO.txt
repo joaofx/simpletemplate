@@ -26,3 +26,6 @@ $file.script
 
 - test to check encode UTF8
 - remove dependency of nbehave
+- better documentation in html
+- build script increment build version number
+- alert when transformation file exists

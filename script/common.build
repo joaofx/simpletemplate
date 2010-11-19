@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://nant.sf.net/schemas/nant.xsd" default="quick" basedir="..\">
 
+  <property name="version" value="0.0.0.0" overwrite="true"  />
+  <property name="dir.doc" value="doc"/>
   <property name="dir.source" value="src"/>
-  <property name="dir.release" value="build\release"/>
+  <property name="dir.tools" value="tools"/>
+  <property name="dir.release" value="release"/>
   <property name="dir.build" value="build\temp"/>
-  <property name="dir.lib" value="lib" />
   <property name="dir.results" value="build\results"/>
   <property name="file.solution" value="${dir.source}\SimpleTemplate.sln"/>
   <property name="nant.settings.currentframework" value="net-3.5" />
   
   <target name="quick" depends="prepare, compile, test" />
-  <target name="release" depends="prepare, compile, test, package" />
+  <target name="release" depends="prepare, set-version, compile, test, package" />
 
   <target name="prepare">
     <delete dir="${dir.build}" failonerror="false" includeemptydirs="true" />
     <mkdir dir="${dir.build}" />
   </target>
 
+  <target name="set-version">
+    <asminfo output="${dir.source}\SimpleTemplate\Properties\AssemblyInfo.cs" language="CSharp">
+      <imports>
+        <import namespace="System" />
+        <import namespace="System.Reflection" />
+        <import namespace="System.Runtime.InteropServices" />
+      </imports>
+      <attributes>
+        <attribute type="ComVisibleAttribute" value="false" />
+        <attribute type="CLSCompliantAttribute" value="true" />
+        <attribute type="AssemblyVersionAttribute" value="${version}" />
+        <attribute type="AssemblyFileVersionAttribute" value="${version}" />
+        <attribute type="AssemblyTitleAttribute" value="SimpleTemplate" />
+        <attribute type="AssemblyDescriptionAttribute" value="Template file transformation" />
+        <attribute type="AssemblyCopyrightAttribute" value="No copyright" />
+      </attributes>
+    </asminfo>
+  </target>
+  
   <target name="compile" depends="prepare">
     
     <exec 
@@ -32,14 +53,14 @@
   <target name="test" depends="compile">
     
     <exec 
-      program="${dir.lib}\nunit\nunit-console.exe" 
+      program="${dir.tools}\nunit\nunit-console.exe" 
       commandline="${dir.build}\SimpleTemplate.Tests.dll /xml:${dir.results}\TestResult.xml"
       workingdir="." />
     
   </target>
 
-  <target name="package">
-    <echo message="${nant::get-base-directory()}" />
+  <target name="package" depends="test">
+    <copy file="${dir.build}\SimpleTemplate.exe" tofile="${dir.release}\SimpleTemplate.exe" />
   </target>
-  
+
 </project>
