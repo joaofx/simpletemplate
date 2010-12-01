@@ -1,10 +1,6 @@
-- /?
-- create folders structure lib, src
-- create build script to release package
-- copyright and license on console and source files
-- delete generated files based on script
-- parse before execute anything
 - regex to parse
+- parse before execute anything
+- delete generated files based on script
 - refactor foreach code
 - change ${foreach} by #{foreach}
 - include transformed files in csproj
@@ -29,3 +25,5 @@ $file.script
 - better documentation in html
 - build script increment build version number
 - alert when transformation file exists
+- better console help
+- copyright and license on console and source files

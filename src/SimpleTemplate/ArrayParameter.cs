@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Text.RegularExpressions;
 
     public class ArrayParameter
     {
@@ -20,7 +21,10 @@
 
         public ArrayParameter Parse()
         {
-            this.FindItemStartingAt(0);
+            var match = Regex.Matches(this.text, @"(\{.*\})");
+
+
+            ////this.FindItemStartingAt(0);
             return this;   
         }
 

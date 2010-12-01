@@ -11,7 +11,9 @@
                 "\"title:Grupo de usuário\" module:Segurança " +
                 "attr:{name:Name,type:string},{name:Active,type:bool}";
 
-            SimpleTemplate.Program.Main(CommandLine.ToArgs(CommandLineText));
+            ////SimpleTemplate.Program.Main(CommandLine.ToArgs(CommandLineText));
+            
+            SimpleTemplate.Program.Main(new[] { "/?" } );
 
             Console.ReadKey();
         }
