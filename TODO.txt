@@ -1,4 +1,3 @@
-- regex to parse
 - parse before execute anything
 - delete generated files based on script
 - refactor foreach code
@@ -27,3 +26,4 @@ $file.script
 - alert when transformation file exists
 - better console help
 - copyright and license on console and source files
+- regex to parse
